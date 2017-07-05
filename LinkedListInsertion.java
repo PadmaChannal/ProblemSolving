@@ -1,91 +1,115 @@
-import java.util.*;
+// package whatever; // don't place package name!
 
-class LinkedListInsertion
+import java.io.*;
+import java.*;
+
+class LinkedList
 {
     Node head;
-
-    static class Node {
-        int data;
-        Node next;
-
-        Node(int d){ data=d; next=null;}
-    }
-
-
-    public  void insertFront(int data)
+    
+    class Node
     {
-        Node new_node = new Node(data);
-        new_node.next=head;
-        head=new_node;
+     int data; Node next;
+        Node(int d)
+        { data = d; next = null;  }
     }
-
-    public  void insertAtGiven(Node n, int data)
+    
+    
+    // Code to add nodes to the last so that the pointer is at first element added
+    // Example: 1->2->3->4->5. Here Head= 1 and Tail = 5
+    
+    
+    void insertEnd(int d)
     {
-        Node new_node = new Node(data);
-        if(n.next == null)
+        Node n= head;
+        Node new_Node = new Node(d);
+        // Note that anyNode.next is not assigned to null by default!!!
+        new_Node.next=null;
+        
+        if(head==null)
         {
-            System.out.println("Preious node cannot be null");
+            head=new_Node;
+            return;
         }
-        else
+        
+        while(n.next!=null)
         {
-            new_node.next=n.next;
-            n.next=new_node;
+            n=n.next;
         }
+        
+        n.next=new_Node;
+        
     }
-
-    public  void  insertAtEnd(int d)
+    
+    void insertFirst(int d)
+    {
+        Node n = new Node(d);
+        n.next=head;
+        head=n;
+    }
+    
+    void printList()
+    {
+        Node n = head;
+        while(n!=null)
+        {
+            System.out.println(" " + n.data + " ");
+            n=n.next;
+        }
+        
+    }
+    
+    void insertInLSorted(int d)
     {
         Node new_node=new Node(d);
-        new_node.next=null;
-
-        Node last= head;
-        while(last.next!=null)
+        Node curr=head;
+        if(curr==null  || head.data >= new_node.data)
+        {    new_node.next=null;
+            head=new_node;
+        
+        }
+        
+        else 
         {
-            last=last.next;
+        
+                while(curr.next!=null && curr.next.data<new_node.data )
+                curr=curr.next;
+                new_node.next=curr.next;
+                curr.next=new_node;
         }
-        last.next=new_node;
+        
     }
-
-    public void printList()
-    {
-        Node last = head;
-        while(last.next!=null) {
-            System.out.println(last.data + "");
-            last = last.next;
-        }
-    }
+    
     public static void main(String[] args)
     {
-        LinkedListInsertion myList = new LinkedListInsertion();
-        myList.head=new Node(1);
+        
+        
+        // ************** Insert the new Node at the end: Head is always the first element you have inserted
+        LinkedList myList = new LinkedList();
+        myList.insertEnd(1);
+        myList.insertEnd(2);
+        myList.insertEnd(5);
+         //myList.printList();
+        //****************
+        
+        
+        // *************** Inserting at the beginning of List: PUSH, so HEAD= last element inserted
+//         LinkedList myList2 = new LinkedList();
+//         myList2.insertFirst(1);
+//         myList2.insertFirst(2);        
+//         myList2.insertFirst(3);
+//            System.out.println("\n");
+//            myList2.printList();
+        // ****************
+        
+        
+        //***************** Inserting Node in sorted List at the right position
+            myList.insertInLSorted(4);
+        
+            myList.printList();
 
-        Node three = new Node(3);
-
-        Node five =  new Node(5);
-
-        Node seven = new Node (7);
-
-        myList.head.next=three;
-        three.next=five;
-        five.next=seven;
-
-        //myList.printList();
-
-        // Inserting 0
-        //myList.insertFront(0);
-        //myList.printList();
-
-
-        //insert "4" after 3
-        //myList.insertAtGiven(three,4);
-        //myList.printList();
-
-        //insert 8 after 7
-        myList.insertAtEnd(8);
-        myList.printList();
-
-
-
-
+        
+        
+        
     }
 }
