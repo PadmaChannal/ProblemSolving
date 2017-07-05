@@ -15,7 +15,7 @@ class LinkedList
     }
     
     
-    // Code to add nodes to the last so that the pointer is at first element added
+    // Function to add nodes to the last so that the pointer is at first element added
     // Example: 1->2->3->4->5. Here Head= 1 and Tail = 5
     
     
@@ -41,6 +41,9 @@ class LinkedList
         
     }
     
+     // Function to add nodes to the first so that the pointer is at last element added
+    // Example: 1->2->3->4->5. Here Head= 5 and Tail = 1 , Similar to push
+    
     void insertFirst(int d)
     {
         Node n = new Node(d);
@@ -59,6 +62,8 @@ class LinkedList
         
     }
     
+    
+    // Function to add element in a sorted List without disturbing the list
     void insertInLSorted(int d)
     {
         Node new_node=new Node(d);
