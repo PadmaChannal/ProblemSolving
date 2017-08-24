@@ -1,0 +1,60 @@
+// package whatever; // don't place package name!
+
+import java.io.*;
+import java.util.Arrays;
+
+class myCode
+{
+    public static void main (String[] args) throws java.lang.Exception
+    {
+    
+        
+        
+        int[] myArray = {6,7,8,1,2,4,3,5,5,7,2,1,1};
+        int[] count = new int[myArray.length];
+        int sum=0;
+        
+        System.out.println(" Input");
+        
+        for(int i=0;i< myArray.length;i++)
+        {
+            System.out.println(myArray[i]);
+        }
+         Arrays.sort(myArray);
+        
+        // Check if Arrays are sorted.
+//         for(int i=0;i< myArray.length;i++)
+//         {
+//             System.out.println(myArray[i]);
+//         }
+        
+        
+        for(int i=0;i< myArray.length;i++)
+        {
+             count[i] =0;
+            
+            for(int j=i+1;j< myArray.length;j++)  
+            {
+                if(myArray[i]==myArray[j])
+                {
+                    myArray[j]++;
+                    
+                }
+            }
+            
+            sum+=myArray[i];
+            
+            
+        }
+        
+         System.out.println(" Output");
+        
+        for(int i=0;i< myArray.length;i++)
+        {
+            System.out.println(myArray[i]);
+        }
+        
+        
+        System.out.println("min sum" + " " +sum);
+    }
+}
