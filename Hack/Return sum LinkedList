@@ -1,0 +1,78 @@
+// package whatever; // don't place package name!
+/*You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8
+
+
+*/
+
+import java.io.*;
+import java.util.*;
+
+class myCode
+{
+    public static void main (String[] args) throws java.lang.Exception
+    {
+        System.out.println("Hello Java");
+        
+        ListNode l1=new ListNode(2);
+        l1.next= new ListNode(4);
+        l1.next.next= new ListNode(3);
+        
+        ListNode l2=new ListNode(5);
+        l2.next= new ListNode(6);
+        l2.next.next= new ListNode(4);
+        
+        
+          ListNode l3  = addTwoNumbers(l1,l2);
+    
+            
+        
+    
+    }
+    
+     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode ref1 = l1, ref2 =l2;
+         //List result = new LinkedList<Integer>();
+        ListNode result = new ListNode(0);
+         
+         
+        int rem = 0;
+        
+        
+        while(ref1 !=null || ref2!= null )
+        {
+        
+            
+             ListNode temp= new ListNode((ref1.val+ref2.val)%10 + rem);
+             System.out.println(temp.val);
+             rem=(ref1.val+ref2.val)/10 ;
+          
+            //result=temp;
+                
+            ref1=ref1.next;
+            ref2=ref2.next;
+            ///result.add(temp.val);
+            
+        }
+        
+        return result;
+    }
+    
+     public static class ListNode {
+      int val;
+      ListNode next;
+      ListNode(int x) { val = x; }
+  }
+}
+
+
+
+
+// 2,4,3 --> 3,4,2
+// 5,6,4 --> 4,6,5
+// 7,0,8 --> 8,0,7
+    
