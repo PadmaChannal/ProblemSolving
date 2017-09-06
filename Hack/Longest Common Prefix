@@ -1,0 +1,27 @@
+class Solution {
+    public String longestCommonPrefix(java.lang.String[] strs) throws java.lang.StringIndexOutOfBoundsException {
+       
+        String prefix = "";
+        
+       if (strs.length == 0) return "";
+        if( strs.length ==1) return strs[0];
+        
+        for(int i=0;i<strs.length-1;i++)
+        {
+            
+            for(int j=0; j<(strs[i].length()<strs[i+1].length() ? strs[i].length() : strs[i+1].length() ); j++)
+            {
+               
+                
+                if(strs[i].charAt(j)==strs[i+1].charAt(j))
+                {
+                    prefix=prefix + strs[i].charAt(j);
+                }
+                
+            }
+            
+        }
+        
+        return prefix;
+    }
+}
