@@ -1,0 +1,22 @@
+class Solution {
+    public String largestNumber(int[] nums) {
+        
+        ArrayList<Integer> myArray= new ArrayList<Integer>();
+        
+        for(int i=0; i<nums.length;i++)
+            while(nums[i]!=0){  
+                myArray.add(nums[i]%10);
+                nums[i]=nums[i]/10;
+            }
+        
+        Collections.sort(myArray, Collections.reverseOrder()); 
+        // Equivalent to:
+        // Collections.sort(list);
+        // Collections.reverse(list);
+        String str="";
+        for(int i : myArray)
+            str=str+i;
+        return str;
+        
+    }
+}
