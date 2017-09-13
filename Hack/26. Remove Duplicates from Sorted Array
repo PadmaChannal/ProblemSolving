@@ -9,6 +9,7 @@ Your function should return length = 2, with the first two elements of nums bein
 */
 
 import java.io.*;
+
 import java.lang.*;
 
 class myCode
