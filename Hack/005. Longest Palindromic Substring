@@ -1,0 +1,39 @@
+class Solution {
+    public String longestPalindrome(String s) {
+        
+        if (s.length() == 0 || s.length() == 1)
+            return s;
+        
+        int len = s.length();
+        String longest = s.substring(0,0);
+        
+        for( int i = 0; i < len ; i++)
+        {
+            String tmp = palin(s, i ,i);
+            
+            if ( tmp.length() > longest.length())
+                longest = tmp;
+            
+            tmp = palin( s, i, i+1);
+            if( tmp.length() > longest.length())
+                longest = tmp;
+                
+        }
+        return longest;
+        
+    }
+    
+    public String palin ( String t, int i, int j)
+    {
+        while( i >= 0 && j <= t.length() -1 && t.charAt(i) == t.charAt(j))
+        {
+            i --;
+            j++;
+            
+            
+            
+        }
+        
+        return t.substring(i+1 , j);
+    }
+}
