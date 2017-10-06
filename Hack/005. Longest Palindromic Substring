@@ -30,8 +30,6 @@ class Solution {
             i --;
             j++;
             
-            
-            
         }
         
         return t.substring(i+1 , j);
