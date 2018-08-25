@@ -1,4 +1,7 @@
 // Author : Padma Channal
+
+// Note: Static methods and it's usage
+
 class Node {
 	int data;
 	Node left, right;
