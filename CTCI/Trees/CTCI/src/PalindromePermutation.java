@@ -12,6 +12,7 @@ public class PalindromePermutation {
 		 * 2. think when to use post and pre-increment
 		 */
 		
+		// Space ?
 		String s = "aabbccuy";
 		char[] chArr = s.toCharArray();
 		
