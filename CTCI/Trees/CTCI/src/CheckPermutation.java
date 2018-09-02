@@ -24,7 +24,6 @@ public class CheckPermutation {
 			System.out.println("is a permutation");
 		else
 			System.out.println("Not a permutation");
-		
 
 		/* Take away: 
 		 * 1. Comparing arrays: chArr1.equals(chArr2)
