@@ -18,9 +18,13 @@ public class URLify {
 			j++;
 		}
 		
-		for (char c : chArr){
-			System.out.print(c + " ");
-		}
+		chArr.toString();
+		System.out.println(chArr);
+		
+		/* Take away
+		 *  Comparing a space -- Single quotes
+		 *  Converting a charArray to String.
+		 */
 
 	}
 
