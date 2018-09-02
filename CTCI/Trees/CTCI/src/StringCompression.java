@@ -4,33 +4,22 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 
 public class StringCompression {
-
+	// Take away : do not complicate. This is easy af.
+	
 	public static void main(String[] args) {
 		
-		//// ----> REDO
-		String s = "abc";
+		String s = "aabbbaabcccc";
+		int count = 0;
+		StringBuilder sb = new StringBuilder();
 		
-		int counti = 1;
-		int countj = 1;
-		StringBuilder sb=new StringBuilder();  
-		int i;
-		for( i = 0; i < s.length()-1; i++) {
-			if(s.charAt(i) == s.charAt(i+1)) 
-				counti++;
-			else {
-				 
-				countj = counti+ 1;
-				counti = 0;
+		for(int i = 0; i < s.length();i++) {
+			count++;
+			if(i+1 >= s.length() || s.charAt(i) != s.charAt(i+1)) {
 				sb.append(s.charAt(i));
-				if(s.charAt(0) == s.charAt(i))
-					sb.append(countj -1);
-				else
-					sb.append(countj);
+				sb.append(count);
+				count = 0;
 			}
 		}
-		
-		sb.append(s.charAt(i));
-		sb.append(counti+1);
 		
 		System.out.println(sb);
 
