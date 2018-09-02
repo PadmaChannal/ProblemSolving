@@ -20,7 +20,7 @@ public class IsUnique {
 			
 			// Approach 2: Sort a string by converting it to char Array. O(nlogn)
 			// Approach 3: Extra DS --> Boolean array O(n)
-			// Approach 4: Bit vector ?
+			// Approach 4: Bit vector ? 
 			
 			/* take away:
 			 * Arrays.fill
