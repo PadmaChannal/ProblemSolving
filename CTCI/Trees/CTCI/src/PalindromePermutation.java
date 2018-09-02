@@ -7,6 +7,11 @@ public class PalindromePermutation {
 
 	public static void main(String[] args) {
 		
+		/* Take away :
+		 * 1. Iterating HashMap with iterator 
+		 * 2. think when to use post and pre-increment
+		 */
+		
 		String s = "aabbccuy";
 		char[] chArr = s.toCharArray();
 		
