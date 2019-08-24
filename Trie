@@ -1,0 +1,142 @@
+// package whatever; // don't place package name!
+
+import java.io.*;
+import java.util.*;
+
+class MyCode {
+	public static void main (String[] args) {
+		System.out.println("Hello Java");
+    
+    Trie trie = new Trie();
+		trie.insertAmit("art");
+		trie.insertAmit("bunny");
+		trie.insertAmit("buck");
+		trie.insertAmit("dog");
+		trie.insertAmit("Apostate");
+		System.out.println(trie.searchAmit("bu"));
+		
+    
+	}
+}
+
+class TrieNode {
+    public char c;
+    public HashMap<Character, TrieNode> children = new HashMap<>();
+    private boolean isLeaf;
+    public ArrayList<String> leafWords = new ArrayList<>();
+
+    public TrieNode() {}
+
+    public TrieNode(char c){
+        this.c = c;
+    }
+
+    public HashMap<Character, TrieNode> getChildren() {
+        return children;
+    }
+
+    public void setChildren(HashMap<Character, TrieNode> children) {
+        this.children = children;
+    }
+
+    public boolean isLeaf() {
+        return isLeaf;
+    }
+
+    public void setLeaf(boolean isLeaf) {
+        this.isLeaf = isLeaf;
+    }
+}
+class Trie {
+
+    private TrieNode root;
+
+    public Trie() {
+        root = new TrieNode();
+    }
+
+    
+    public void insertAmit(String word) {
+      /*
+      set node to root
+      
+      for each char c in word:
+        
+        if end of word, this is a leaf node
+        create an arraylist of words to store.
+        
+        check if char is in node's childres
+        if yes
+          do nothing
+        else no
+          create node
+          update children map
+        
+        node = node.children.get(c)
+          
+      */
+      
+      TrieNode node = root;
+      int wordLength = word.length();
+      for(char c : word.toCharArray()){
+        wordLength--;
+        if(!node.getChildren().containsKey(c)){
+          TrieNode newNode = new TrieNode(c);
+          node.getChildren().put(c, newNode);
+        }
+        node = node.getChildren().get(c);
+        
+        //handle leaves
+        if(wordLength == 0){
+          node.setLeaf(true);
+          node.leafWords.add(word);
+          // System.out.println("Adding " + word + " to Node of char " + node.c);
+        }
+      }
+    }
+    
+    public ArrayList<String> searchAmit(String prefix) {
+      /* 
+      set node = root
+      traverse the tree as per the prefix
+      If at any point traversal is not possible. return empty arraylist
+      if final prefix node is a leaf, add all leafWords to result
+      if final prefix node is not a leaf, 
+        iterate over the sub tree of final prefix node, find all leaves, 
+        for each leaf
+          add all leafWords to result 
+      
+      */
+      
+      TrieNode node = root;
+      for(char c : prefix.toCharArray()){
+        if(!node.getChildren().containsKey(c)){
+          // System.out.println("Couldn't find prefix");
+          return new ArrayList<>();
+        }
+        
+        node = node.getChildren().get(c);
+      }
+      if(node.isLeaf()){
+        // System.out.println("returning words for "+ node.c);
+        return new ArrayList<String>(node.leafWords);
+      }
+      
+      // System.out.println("Finding leaves under "+ node.c);
+      ArrayList<String> result = new ArrayList<>();
+      ArrayList<TrieNode> nodeToVisit = new ArrayList<>(); // for sub tree traversal
+      nodeToVisit.add(node);
+      while(!nodeToVisit.isEmpty()){
+        TrieNode cur = nodeToVisit.remove(0);
+        if(cur.isLeaf()){
+          result.addAll(cur.leafWords);
+        }
+        for (TrieNode n : cur.getChildren().values()){
+          nodeToVisit.add(n);
+        }
+      }
+      return result;
+    }
+
+    
+}
